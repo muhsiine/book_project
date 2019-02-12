@@ -23,7 +23,10 @@ main{
 	width:75px;
 }
 
-
+.checked{
+	color: orange;
+	font-size: 2.5rem;
+}
 .rate{
 	color: #777;
 }

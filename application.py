@@ -20,14 +20,28 @@ Session(app)
 engine = create_engine(os.getenv("DATABASE_URL"))
 db = scoped_session(sessionmaker(bind=engine))
 
+bookTitles = ["Krondor: The Betrayal", "The Dark Is Rising", "The Black Unicorn", "I, Robot", "Four Blondes", "Love, Stargirl", "The Tenth Circle", "Vanishing Acts", "Aztec", "Marlfox", "Lady Midnight", "The Secret Keeper"]
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index.html", books=bookTitles)
+
+@app.route("/contact")
+def contact():
+	return render_template("contact.html")
+	
+@app.route("/about")
+def about():
+	return render_template("about.html")
+
 
 @app.route("/book")
 def book():
 	return render_template("bookInfo.html")
+	
+@app.route("/user")
+def user():
+	return render_template("userInfo.html")
 
 
 @app.route("/login")

@@ -7,6 +7,10 @@ html,
 body {
   height: 100%;
 }
+
+.test {
+    border: 1px solid red;
+}
 .passforgot {
   float: right;
   text-decoration: none;
