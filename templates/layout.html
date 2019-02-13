@@ -32,8 +32,9 @@
 		                </li>
 
 		            </ul>
-		            {% if user %}
 		            <ul class="navbar-nav">
+		            	
+		            {% if user %}
 		                <li class="nav-item dropdown">
 		                    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 		                      <img src="static/images/{% if user.uicon %}{{user.uicon}}{% else %}userP.png{% endif %}" class="icon" alt="icon">
@@ -43,8 +44,16 @@
 		                        <a class="dropdown-item" href={{url_for('log_out')}}>Log out</a>
 		                    </div>
 		                </li>
-		            </ul>
+		            {% else %}
+		            	<li class="nav-item" style="border-right: 2px solid rgba(50, 50, 50, .8);">
+		                    <a class="nav-link" href={{url_for('login')}}>Sign in</a>
+		                </li>
+
+		            	<li class="nav-item">
+		                    <a class="nav-link" href={{url_for('sign_up')}}>Register</a>
+		                </li>
 		            {% endif %}
+		            </ul>
 
 		        </div>
 		    </nav>
