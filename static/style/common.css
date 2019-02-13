@@ -13,6 +13,18 @@ footer{
 	font-weight: bold;
 }
 
+.icon{
+	height: 40px;
+	width: 40px;
+	border-radius: 8px;
+	opacity: 0.5;
+}
+.icon:hover{
+
+	opacity: 1;
+}
+
+
 body,html{
 	background-color: #f8f9fa;
 	font-family: 'Poppins',sans-serif;

@@ -2,23 +2,27 @@
 
 {% block title%}Login{% endblock %}
 {% block main%}
+      <form class="form-signin" action={{url_for('check_login')}} method="POST">
+            <div class="text-center mb-4">
+              <img class="mb-4" src="static/images/book.png" alt="" width="72" height="72">
+              <h1 class="h3 mb-3 font-weight-normal">Login Form</h1>
+            </div>
+            <div class="form-label-group">
+              <input type="text" id="inputUName" class="form-control" name="username" placeholder="Username" required autofocus>
+              <label for="inputUName">Username</label>
+            </div>
 
-      <div class="form-label-group">
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-        <label for="inputEmail">Email address</label>
-      </div>
+            <div class="form-label-group">
+              <input type="password" id="inputPassword" class="form-control" name="userpass" placeholder="Password" required>
+              <label for="inputPassword">Password</label>
+            </div>
 
-      <div class="form-label-group">
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        <label for="inputPassword">Password</label>
-      </div>
-
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-        <a class="passforgot" href="">don't have an account?</a>
-      </div>
-      <button class="btn btn-lg btn-success btn-block" type="submit">Sign in</button>
+            <div class="checkbox mb-3">
+              <label>
+                <input type="checkbox" value="remember-me"> Remember me
+              </label>
+              <a class="passforgot" href={{url_for('sign_up')}}>don't have an account?</a>
+            </div>
+            <button class="btn btn-lg btn-success btn-block" type="submit">Sign in</button>
 
 {% endblock %}

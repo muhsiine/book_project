@@ -2,35 +2,39 @@
 
 {% block title%}Sign Up{% endblock %}
 {% block main%}
+      <form class="form-signin" action={{url_for('check_signup')}} method="POST" enctype="multipart/form-data">
+            <div class="text-center mb-4">
+              <img class="mb-4" src="static/images/book.png" alt="" width="72" height="72">
+              <h1 class="h3 mb-3 font-weight-normal">Registration Form</h1>
+            </div>
+            <div class="form-label-group">
+              <input type="text" id="inputUsername" class="form-control" name="username" placeholder="Username" required autofocus>
+              <label for="inputUsername">Username</label>
+            </div>
 
-      <div class="form-label-group">
-        <input type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
-        <label for="inputUsername">Username</label>
-      </div>
+            <div class="form-label-group">
+              <input type="email" id="inputEmail" class="form-control" name="mail" placeholder="Email address" required autofocus>
+              <label for="inputEmail">Email address</label>
+            </div>
 
-      <div class="form-label-group">
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-        <label for="inputEmail">Email address</label>
-      </div>
+            <div class="form-label-group">
+              <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" onChange="checkPasswordMatch();" required>
+              <label for="inputPassword">Password</label>
+            </div>
 
-      <div class="form-label-group">
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" onChange="checkPasswordMatch();" required>
-        <label for="inputPassword">Password</label>
-      </div>
+            <div class="form-label-group" style="margin-bottom: 0px;">
+              <input type="password" id="SecondPassword" class="form-control" placeholder="Password" onChange="checkPasswordMatch();" required>
+              <label for="SecondPassword">Confirm Password</label>
+            </div>
 
-      <div class="form-label-group" style="margin-bottom: 0px;">
-        <input type="password" id="SecondPassword" class="form-control" placeholder="Password" onChange="checkPasswordMatch();" required>
-        <label for="SecondPassword">Confirm Password</label>
-      </div>
+            <div class="form-group" style="margin-top: -5px;">
+                <div class="input-group input-file" name="file">
+                    <input type="text" class="form-control" placeholder='Choose image...' />     
+                    <button type="button" class="btn btn-outline-secondary btn-choose" style="border-radius: 0px;">Choose</button>
+                </div>
+            </div>
 
-      <div class="form-group" style="margin-top: -5px;">
-          <div class="input-group input-file" name="Fichier1">
-              <input type="text" class="form-control" placeholder='Choose image...' />     
-              <button type="button" class="btn btn-outline-secondary btn-choose" style="border-radius: 0px;">Choose</button>
-          </div>
-      </div>
-
-      <button class="btn btn-lg btn-danger btn-block" type="submit" onClick="checkPasswordMatch();">Sign up</button>
+            <button class="btn btn-lg btn-danger btn-block" type="submit" onClick="checkPasswordMatch();">Sign up</button>
  
 {% endblock %}
 

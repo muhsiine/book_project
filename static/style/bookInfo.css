@@ -6,13 +6,15 @@ html, body{
 main{
 	margin-top: 20px;
 }
+
 .txtAreaButton{
 	padding: 26px;
 	height: 100%;
 	margin: 0 auto;
-  width:96%;
+  	width:96%;
 
 }
+
 .comment{
   padding-right: 20px;
 

@@ -7,12 +7,12 @@
 
 
       <section class="jumbotron text-center jumboBack" >
-      <a href={{url_for('login')}}><button type="button" class="btn btn-outline-dark btn-lg colorIt">Sign in</button></a>
-      <a href={{url_for('sign_up')}}><button type="button" class="btn btn-dark btn-lg">Register</button></a>
+      <a href={{url_for('login')}} style="{% if session['user'] %} visibility: hidden;{% endif %}"><button type="button" class="btn btn-outline-dark btn-lg colorIt">Sign in</button></a>
+      <a href={{url_for('sign_up')}} style="{% if session['user'] %} visibility: hidden;{% endif %}"><button type="button" class="btn btn-dark btn-lg">Register</button></a>
 
 
         <div class="container">
-          <h1 class="jumbotron-heading colorIt">Book Finder</h1>
+          <h1 class="jumbotron-heading colorIt">Book Finder {# {% if session['user'] %} {{session['user'].uname}} {% endif %} #}</h1>
           <p class="lead text-muted colorIt leading_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quibusdam dolores quae. Soluta libero, fuga reprehenderit id porro doloribus, ipsum reiciendis sint magnam architecto sed harum ex nam quia tempore.</p>
          <div class="input-group">
                 <input class="form-control border-secondary py-3" type="search" placeholder="search">
@@ -37,14 +37,14 @@
               <div class="col-md-4">
                 <div class="card mb-4 box-shadow">
                   <img class="card-img-top img-thumbnail" src="static/images/img-placeholder.png" alt="">
-                  <div class="card-header text-center">{{book}}</div>
+                  <div class="card-header text-center">{{book.title}}</div>
                   <div class="card-body">
                     <p class="card-text"></p>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
                         <button type="button" class="btn btn-sm btn-outline-secondary">More info</button>
                       </div>
-                      <small class="text-muted">1998</small>
+                      <small class="text-muted">{{book.year}}</small>
                     </div>
                   </div>
                 </div>

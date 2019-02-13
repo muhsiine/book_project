@@ -13,11 +13,7 @@
     <link href="static/style/login-style.css" rel="stylesheet">
   </head>
   <body>
-    <form class="form-signin">
-      <div class="text-center mb-4">
-        <img class="mb-4" src="static/images/book.png" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Registration Form</h1>
-      </div>
+    
     {% block main%}{% endblock %}
       <a href={{url_for('index')}} class="btn btn-lg btn-secondary btn-block">Back to the home page</a>
       <p class="mt-5 mb-3 text-center text-muted">&copy; 2019-2020</p>
