@@ -115,7 +115,8 @@ def check_signup():
         filename = secure_filename(filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         mdb.add_user(uname, umail, upass, filename)
-    return redirect(url_for('login'))
+        session['user'] = mdb.get_user_by(uname, upass)
+    return redirect(url_for('index'))
 
 @app.route("/log_out")
 def log_out():
