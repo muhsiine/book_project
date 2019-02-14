@@ -29,12 +29,12 @@ def allowed_file(filename):
 # engine = create_engine(os.getenv("DATABASE_URL"))
 # db = scoped_session(sessionmaker(bind=engine))
 
-books = mdb.get_top_books(12)
-
+b = mdb.get_top_books(12)
+books = gra.get_covers(b)
 
 @app.route("/")
 def index():
-    return render_template("index.html", books=gra.get_covers(books))
+    return render_template("index.html", books=books)
 
 
 @app.route("/contact")
