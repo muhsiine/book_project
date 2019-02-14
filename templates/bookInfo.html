@@ -8,7 +8,7 @@
 
                 <div class="col-md-12 col-lg-4">
                     <div class="card">
-                        <img src="static/images/ph_bcover1.png"  class="card-img-top img-fluid image-cover">
+                        <img src="{{data.cover}}"  class="card-img-top img-fluid image-cover">
                         <div class="card-body text-center">
                             <h4 class="card-title">Rate this book</h4>
                             <!-- <p class="card-text">
@@ -42,19 +42,19 @@
                         <table class="align-middle">
                         <tr>
                             <td>ISBN: </td>
-                            <td>93409430h4</td>
+                            <td>{{data.isbn}}</td>
                         </tr>
                         <tr>
                             <td>Title: </td>
-                            <td>Book Title</td>
+                            <td>{{data.title}}</td>
                         </tr>
                         <tr>
                             <td>Author: </td>
-                            <td>John doe</td>
+                            <td>{{data.author}}</td>
                         </tr>
                         <tr>
                             <td>Rate: </td>
-                            <td><span class="rate">4.5</span>  /5 <span class="fa fa-star checked"></span></td>
+                            <td><span class="rate">{{data.rate}}</span>  /5 <span class="fa fa-star checked"></span></td>
                         </tr>
                     </table>
 

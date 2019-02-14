@@ -45,6 +45,17 @@ def get_total_rated(query='0553803700'):
     else:
         return ratings_count.text
 
+
+def get_covers(books):
+    covers = []
+    for book in books:
+        elm = {
+            'book' : book,
+            'cover' : get_cover_image(book.isbn)
+        }
+        covers.append(elm)
+    return covers
+
 def get_reviews_count_on_goodread(query='0553803700'):
     root = ET.fromstring(send_req(query).content)
     try:
@@ -105,7 +116,7 @@ def search_book(query='rowling'):
         element['author']['name'] = book.find('best_book').find('author').find('name').text
         element['image']['image_url'] = book.find('best_book').find('image_url').text
         json_template['books'].append(element)
-    return json.dumps(json_template, indent=2)
+    return json_template
 
 if __name__ == "__main__":
     print('image url : {}'.format(get_cover_image()))

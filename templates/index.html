@@ -35,16 +35,16 @@
           <div class="row">
             {% for book in books %}
               <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                  <img class="card-img-top img-thumbnail" src="static/images/img-placeholder.png" alt="">
-                  <div class="card-header text-center">{{book.title}}</div>
+                <div class="card mb-2 box-shadow">
+                  <img class="card-img-top img-thumbnail" src="{{book.cover}}" alt="" style="width: 200px;height: 200px; display: block;margin:0 auto;">
+                  <div class="card-header text-center">{{book.book.title}}</div>
                   <div class="card-body">
                     <p class="card-text"></p>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-outline-secondary">More info</button>
+                        <a class="btn btn-sm btn-outline-secondary" href={{url_for('book', book_isbn=book.book.isbn, book_title=book.book.title, book_author=book.book.author)}}>More info</a>
                       </div>
-                      <small class="text-muted">{{book.year}}</small>
+                      <small class="text-muted">{{book.book.year}}</small>
                     </div>
                   </div>
                 </div>

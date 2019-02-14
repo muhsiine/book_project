@@ -3,6 +3,8 @@ import hasher
 from flask import Flask, session, render_template, redirect, json, url_for, request, flash
 from flask_session import Session
 from werkzeug.utils import secure_filename
+import goodread_api as gra
+from flask import jsonify
 import os
 app = Flask(__name__)
 
@@ -32,7 +34,7 @@ books = mdb.get_top_books(12)
 
 @app.route("/")
 def index():
-    return render_template("index.html", books=books)
+    return render_template("index.html", books=gra.get_covers(books))
 
 
 @app.route("/contact")
@@ -45,10 +47,20 @@ def about():
     return render_template("about.html")
 
 
-@app.route("/book")
-def book():
-    return render_template("bookInfo.html")
+@app.route("/<string:book_isbn>&<string:book_title>&<string:book_author>")
+def book(book_isbn, book_title, book_author):
+    data = {
+        'isbn' : book_isbn,
+        'title' : book_title,
+        'author' : book_author,
+        'rate' : gra.get_avg_rate(book_isbn),
+        'cover' : gra.get_cover_image(book_isbn)
+    }
+    return render_template("bookInfo.html", data=data)
 
+@app.route("/<string:book_isbn>")
+def api(book_isbn):
+    return jsonify(**gra.search_book(book_isbn))
 
 @app.route("/user")
 def user():
