@@ -13,6 +13,7 @@
 	    {% set user = session['user'] %}
     </head>
     <body>
+    	<div id="load"></div>
     	<header>
 		    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
 		        <a class="navbar-brand" href={{url_for('index')}}><span class="websiteBrand">Brooko. <i class="fas fa-book-open"></i></span></a>
@@ -58,8 +59,8 @@
 		        </div>
 		    </nav>
 		    </header>
-
-    <main role="main">
+	
+    <main role="main" id="contents">
     	{% block main %} {% endblock %}
 
     </main>
