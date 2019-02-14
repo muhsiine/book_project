@@ -16,7 +16,24 @@
               <input type="password" id="inputPassword" class="form-control" name="userpass" placeholder="Password" required>
               <label for="inputPassword">Password</label>
             </div>
-
+            
+              {% with message = get_flashed_messages() %}
+                {% if message %}
+                  <div class="text-danger" style="margin-left: 10px;">
+                    <p>
+                      {% for error in message %}      
+                        {{ error }}
+                      {%endfor%}
+                    </p>
+                  </div>
+                  <script>
+                      console.log('error checking');
+                      document.getElementById("inputUName").classList.add('test');
+                      document.getElementById("inputPassword").classList.add('test');
+                  </script>
+                {% endif %}
+              {% endwith %}
+            
             <div class="checkbox mb-3">
               <label>
                 <input type="checkbox" value="remember-me"> Remember me

@@ -87,7 +87,9 @@ def check_login():
         if user is not None:
             session['user'] = user
         else:
-            return "User not found" # todo make it return to the sign in page and mention the error 
+            message = 'username or password are incorrect! Try again'
+            flash(message)
+            return redirect(url_for('login'))
     return redirect(url_for('index'))
 
 
