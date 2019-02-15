@@ -11,7 +11,7 @@ requests docs ---> http://docs.python-requests.org/en/master/
 
 def send_req(query):
     try:
-        r = requests.get('https://www.goodreads.com/search.xml', params={'key' : os.getenv('KEY'), 'q' : query})
+        r = requests.get('https://www.goodreads.com/search/index.xml', params={'key' : os.getenv('KEY'), 'q' : query})
     except requests.exceptions.RequestException as err:
         print(err)
         sys.exit(1)
@@ -87,7 +87,7 @@ def get_pub_date(query='0553803700'):
         day_replace = day.text
     return '{d}-{m}-{y}'.format(d = day_replace, m = month_replace, y = year_replace)
 
-def search_book(query='rowling'):
+def search_book(query):
     '''search for books with query'''
     json_template = {
         'books' : []
@@ -108,6 +108,7 @@ def search_book(query='rowling'):
             }
 
     root = ET.fromstring(send_req(query).content)
+    print(send_req(query).content)
     list_books = root.find('search').find('results')
     for book in list_books:
         element['title'] = book.find('best_book').find('title').text
@@ -115,13 +116,13 @@ def search_book(query='rowling'):
         element['rate']['average_rating'] = book.find('average_rating').text
         element['author']['name'] = book.find('best_book').find('author').find('name').text
         element['image']['image_url'] = book.find('best_book').find('image_url').text
-        json_template['books'].append(element)
+        json_template['books'].append(element.copy())
     return json_template
 
 if __name__ == "__main__":
-    print('image url : {}'.format(get_cover_image()))
-    print('average rate : {}'.format(get_avg_rate()))
-    print('total rates : {}'.format(get_total_rated()))
-    print('total reviews : {}'.format(get_reviews_count_on_goodread()))
-    print('date pb : {}'.format(get_pub_date()))
-    print('search : {}'.format(search_book()))
+    '''print('image url : {}'.format(get_cover_image()))
+                print('average rate : {}'.format(get_avg_rate()))
+                print('total rates : {}'.format(get_total_rated()))
+                print('total reviews : {}'.format(get_reviews_count_on_goodread()))
+                print('date pb : {}'.format(get_pub_date()))'''
+    print('search : {}'.format(search_book('rowling')))

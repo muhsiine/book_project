@@ -6,6 +6,7 @@ from werkzeug.utils import secure_filename
 import goodread_api as gra
 from flask import jsonify
 import os
+
 app = Flask(__name__)
 
 UPLOAD_FOLDER = 'static/images'
@@ -58,9 +59,9 @@ def book(book_isbn, book_title, book_author):
     }
     return render_template("bookInfo.html", data=data)
 
-@app.route("/<string:book_isbn>")
-def api(book_isbn):
-    return jsonify(**gra.search_book(book_isbn))
+@app.route("/<string:book_info>")
+def api(book_info):
+    return jsonify(**gra.search_book(book_info))
 
 @app.route("/user")
 def user():
